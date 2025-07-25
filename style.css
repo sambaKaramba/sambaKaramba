@@ -1,44 +1,95 @@
 /* style.css */
 
 /* Schriftart & Grundfarben */
-body {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  color: #333;
-  background-color: #fafafa;
-  margin: 0;
-  padding: 0;
-}
+ body {
+      background-color: black;
+      color: #fff;
+      font-family: 'Courier New', monospace;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;           /* wichtig */
+      display: flex;               /* wichtig */
+      flex-direction: column;  
+    }
 
 /* Header */
-header {
-  background-color: #004080;
-  color: white;
-  padding: 1rem 2rem;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
+  nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #111;
+      font-size: 1em;
+      padding: 1em 1em;
+      font-family: 'Courier New', monospace;;
+    }
 
-/* Footer */
-footer {
-  background-color: #004080;
-  color: white;
-  padding: 1rem 2rem;
+nav h1 {
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #00ff00;
   text-align: center;
-  font-size: 0.9rem;
+  flex: 1; /* optional: nimmt Platz ein und hilft beim Zentrieren */
 }
 
 /* Back-Pfeil (z.B. als Link mit Icon) */
-.back-arrow {
-  display: inline-flex;
-  align-items: center;
-  color: #004080;
-  text-decoration: none;
-  font-weight: bold;
-  cursor: pointer;
-}
+ .back-btn {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1em;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Courier New', monospace;;
+    }
 
 .back-arrow::before {
   content: '←';  /* Unicode Pfeil nach links */
   margin-right: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
+.back-btn.back-arrow::after {
+  content: "back";
+  margin-left: 0.3em; /* optional Abstand zum Pfeil */
+  font-family: 'Courier New', monospace;
+}
+
+.about-btn {
+  content: "about";
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Courier New', monospace;
+  font-size: 1em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0; /* optional */
+}
+
+.about-btn::before {
+  content: 'i'; /* Unicode Info-Symbol */
+  margin-right: 0.5rem;
+  font-size: 1.0rem;
+}   
+
+/*Inhalt*/
+main {
+ flex: 1;                   /* nimmt den verfügbaren Platz ein */
+  display: flex;             /* flex-Container aktivieren */
+  align-items: center;       /* vertikal zentrieren */
+  justify-content: center;   /* horizontal zentrieren */
+  flex-direction: column;    /* falls du mehrere Elemente im main hast */
+}
+
+/* Footer */
+
+footer {
+  background-color: black;
+  color: white;
+  padding: 1rem 2rem;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+  
+

@@ -1,6 +1,11 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2821
-\cocoatextscaling0\cocoaplatform0{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-}
+// script.js
+document.addEventListener("DOMContentLoaded", function () {
+  const backButtons = document.querySelectorAll(".back-btn");
+
+  backButtons.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault(); // verhindert Standard-Linkverhalten
+      window.location.href = 'index.html'     // geht zur vorherigen Seite im Verlauf
+    });
+  });
+});

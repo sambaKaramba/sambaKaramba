@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Videothek</title>
+  <link rel="stylesheet" href="style.css"> <!-- Pfad ggf. anpassen -->
+
 
   <!-- Lottie Web Component -->
   <script
@@ -12,49 +14,13 @@
     defer
   ></script>
 
+  <!-- Seiten-spezifisches CSS -->
   <style>
-    body {
-      background-color: #0a0a0a;
-      color: #fff;
-      font-family: 'Courier New', monospace;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #111;
-      padding: 1em 2em;
-    }
-
-    nav h1 {
-      margin: 0;
-      font-size: 2em;
-    }
-
-    nav a, .back-btn {
-      color: #00ff00;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1em;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-family: inherit;
-    }
-
     .carousel-container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 2em;
-      width: auto;
     }
 
     .carousel {
@@ -85,60 +51,48 @@
       z-index: 3;
       box-shadow: 0 8px 32px rgba(0,0,0,0.5);
     }
-
-    footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: #111;
-      color: #fff;
-      text-align: center;
-      padding: 1em 0;
-      font-family: 'Courier New', monospace;
-    }
-
-    #animated-icon {
-      margin-top: 0.5em;
-    }
   </style>
 </head>
 <body>
 
   <!-- ✅ HEADER -->
-  <nav>
-    <button class="back-btn" onclick="window.location.href='index.html'">&#8592; Back</button>
-    <h1>Videothek</h1>
-    <a href="about.html">About</a>
-  </nav>
+ <nav>
+  <a href="#" class="back-btn back-arrow"></a>
+  <h1>videothek</h1>
+  <a href="about.html" class="about-btn"></a>
+</nav>
 
-  <!-- ✅ VIDEO-KARUSSELL -->
-  <div class="carousel-container">
-    <div class="carousel" id="videoCarousel">
-      <!-- YouTube-Videos -->
-      <iframe src="https://www.youtube.com/embed/wi8okUwo8o8?si=2phGCDxOlm1TYqSl" title="Video 1" allowfullscreen></iframe>
-      <iframe src="https://www.youtube.com/embed/2vVZNtsOk58?si=FgJl0RG5qdKoCk_7" title="Video 2" allowfullscreen></iframe>
-      <iframe src="https://www.youtube.com/embed/l4eVSGFSQpM?si=OKF2o4y903UHts54" title="Video 3" allowfullscreen></iframe>
-      <iframe src="https://www.youtube.com/embed/iOfnQ__UsBU?si=vB31nY3G6-ofSBiO" title="Video 4" allowfullscreen></iframe>
-      <iframe src="https://www.youtube.com/embed/zl3o02ICuHs?si=i2nI4hBJRGKaHxYI" title="Video 5" allowfullscreen></iframe>
+
+  <!-- ✅ SEITENINHALT -->
+  <main>
+    <div class="carousel-container">
+      <div class="carousel" id="videoCarousel">
+        <iframe src="https://www.youtube.com/embed/wi8okUwo8o8?si=2phGCDxOlm1TYqSl" title="Video 1" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/2vVZNtsOk58?si=FgJl0RG5qdKoCk_7" title="Video 2" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/l4eVSGFSQpM?si=OKF2o4y903UHts54" title="Video 3" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/iOfnQ__UsBU?si=vB31nY3G6-ofSBiO" title="Video 4" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/zl3o02ICuHs?si=i2nI4hBJRGKaHxYI" title="Video 5" allowfullscreen></iframe>
+      </div>
     </div>
-  </div>
+  </main>
 
-  <!-- ✅ FOOTER mit Lottie -->
+  <!-- ✅ FOOTER -->
   <footer>
-    <p>All videos were shot on my old camcorder (Canon DC230)</p>
     <div id="animated-icon">
       <dotlottie-wc
         src="https://lottie.host/bbad4396-ed70-4135-88f5-431acdf60dd8/FXTsATKg0W.lottie"
-        style="width: 60px; height: 60px; margin: auto;"
+        style="width: 100px; height: 100px; margin: auto;"
         speed="1"
         autoplay
         loop
       ></dotlottie-wc>
     </div>
+    <p>All videos were shot on my old camcorder (Canon DC230)</p>
   </footer>
 
-  <!-- JS: Optional (dein Scroll-Script) -->
+  <script src="script.js"></script>
+
+  <!-- ✅ JS: Optional (dein Scroll-Script) -->
   <script>
     const carousel = document.getElementById('videoCarousel');
     const iframes = carousel.querySelectorAll('iframe');
@@ -155,6 +109,5 @@
 
     updateCoverFlow();
   </script>
-
 </body>
 </html>
