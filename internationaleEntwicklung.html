@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Theorien</title>
   <link rel="stylesheet" href="style.css" />
+    <!-- Lottie Web Component -->
+    <script
+      src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"
+      type="module"
+      defer
+    ></script>
 </head>
 <body>
   <!-- Header -->
@@ -22,14 +28,19 @@
     <p>Hier steht dein Notiztext. Du kannst beliebig HTML verwenden, z.B. <strong>fett</strong>, <em>kursiv</em>, Listen usw.</p>
   </main>
 
-<!-- Footer -->
-<footer>
-    <div style="display: flex; align-items: center; justify-content: center; gap: 0.5em;">
-        <lottie-player src="/assets/Tree.json" background="transparent" speed="1" style="width: 50px; height: 50px;" loop autoplay></lottie-player>
-        <span>planted jul '25</span>
+<!--  FOOTER -->
+  <footer style="display: flex; align-items: center; justify-content: center; gap: 1em; padding: 1em 0;">
+    <div id="animated-icon" style="display: flex; align-items: center; gap: 0em;">
+      <dotlottie-wc
+        src="assets/Tree.lottie"
+        style="width: 90px; height: 90px;"
+        speed="0.7"
+        autoplay
+        loop
+      ></dotlottie-wc>
+      <p style="margin: 0; font-size: 1.1em;">planted jul '25</p>
     </div>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-</footer>
+  </footer>
 
   <script src="script.js"></script>
 </body>
