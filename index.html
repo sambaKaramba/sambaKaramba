@@ -2,121 +2,79 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>sambasi | Home</title>
-
-  <!-- Lottie Web Component EINMAL global laden -->
-  <script
-    src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"
-    type="module"
-    defer
-  ></script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>sambasi | Start</title>
   <style>
     body {
       margin: 0;
-      font-family: sans-serif;
-      background: url('assets/zimmer3.png') no-repeat center center fixed;
-      background-size: cover;
-      height: 100vh;
-      width: 100vw;
-      overflow: hidden;
-    }
-
-    .icon-container {
-      position: relative;   /* oder fixed; inset: 0; wenn du es 1:1 ans Viewport binden willst */
-      width: 100vw;
-      height: 100vh;
-    }
-
-    .icon-link {
-      position: absolute;
-      width: 120px;
-      height: 120px;
-      cursor: pointer;
-      text-decoration: none;
-      color: black;
-      z-index: 10;          /* wichtig, falls etwas drüber liegt */
-      display: inline-flex; /* optional, macht’s robuster */
+      background-color: black;
+      color: #00ff00;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      min-height: 100vh;
+      text-align: left;
+      padding: 2rem;
     }
 
-    .icon-label {
-      position: absolute;
-      bottom: -30px;
-      width: 100%;
-      text-align: center;
-      opacity: 0;
-      font-size: 0.9rem;
-      transition: opacity 0.2s ease;
-      user-select: none;
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      border-right: 2px solid #00ff00;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 2s steps(30, end), blink 0.7s step-end infinite;
     }
 
-    .icon-link:hover .icon-label {
-      opacity: 1;
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
     }
 
-    /* Positionen der Icons in vw/vh */
-    .icon-fotoalben    { left: 12vw; top: 55vh; }
-    .icon-videothek    { left: 65vw; top: 40vh; }
-    .icon-digitalgarden{ left: 48vw; top: 60vh; }
-    .icon-listeningbar { left: 75vw; top: 70vh; }
-
-    @media (max-width: 600px) {
-      .icon-fotoalben    { left: 15vw; top: 60vh; }
-      .icon-videothek    { left: 60vw; top: 50vh; }
-      .icon-digitalgarden{ left: 45vw; top: 70vh; }
-      .icon-listeningbar { left: 70vw; top: 75vh; }
+    @keyframes blink {
+      50% { border-color: transparent; }
     }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .menu a {
+      color: #00ff00;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: color 0.2s;
+    }
+
+    .menu a:hover {
+      color: #00ffaa;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 10px;
+      font-size: 0.8rem;
+      opacity: 0.5;
+    }
+
   </style>
 </head>
 <body>
-  
-  <div class="icon-container">
-    <a href="fotoalben.html" class="icon-link icon-fotoalben">
-      <dotlottie-wc
-        src="https://lottie.host/6c03ccb2-0264-4691-a909-ea4bfdb6846e/ZUioilGvNl.lottie"
-        style="width: 120px; height: 120px;"
-        speed="0.7"
-        autoplay
-        loop
-      ></dotlottie-wc>
-      <div class="icon-label">fotoalben</div>
-    </a>
+  <h1> Wähle einen Bereich</h1>
 
-    <a href="videothek.html" class="icon-link icon-videothek">
-      <dotlottie-wc
-        src="https://lottie.host/bbad4396-ed70-4135-88f5-431acdf60dd8/FXTsATKg0W.lottie"
-        style="width: 120px; height: 120px;"
-        speed="1"
-        autoplay
-        loop
-      ></dotlottie-wc>
-      <div class="icon-label">videothek</div>
-    </a>
-
-    <a href="digitalgarden.html" class="icon-link icon-digitalgarden">
-      <dotlottie-wc
-        src="https://lottie.host/4c50295a-b3ab-44a6-aeda-42da038cbf32/iFUAzgfYHw.lottie"
-        style="width: 120px; height: 120px;"
-        speed="0.7"
-        autoplay
-        loop
-      ></dotlottie-wc>
-      <div class="icon-label">digital garden</div>
-    </a>
-
-    <a href="listeningbar.html" class="icon-link icon-listeningbar">
-      <dotlottie-wc
-        src="https://lottie.host/3dc13a34-c403-4a78-9b95-d60c19673110/zrvqaibXD5.lottie"
-        style="width: 120px; height: 120px;"
-        speed="0.5"
-        autoplay
-        loop
-      ></dotlottie-wc>
-      <div class="icon-label">listening bar</div>
-    </a>
+  <div class="menu">
+    <a href="fotoalben.html">[1] Fotoalben</a>
+    <a href="videothek.html">[2] videothek</a>
+    <a href="digitalgarden.html">[3] digital Garden</a>
+    <a href="listeningbar.html">[4] Listening Bar</a>
   </div>
+
+  <footer>
+    2025
+  </footer>
 </body>
 </html>
