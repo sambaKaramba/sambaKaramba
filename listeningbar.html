@@ -73,7 +73,7 @@
   <div class="window" id="textTab" style="top: 50px; left: 50px; width: 370px;">
     <div class="title-bar">
       playlist
-      <span onclick="this.parentElement.parentElement.style.display='none'" style="float:right;cursor:pointer;font-weight:bold;">✖️</span>
+      <span onclick="minimizeWindow('textTab')" style="float:right;cursor:pointer;font-weight:bold;">✖️</span>
     </div>
     <div class="content">
       <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/7AmKygHpLkZsYnY2iAV62A?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
@@ -84,7 +84,7 @@
   <div class="window" id="musicTab" style="top: 200px; left: 200px; width: 370px;">
     <div class="title-bar" style="font-size:16px; padding:8px;">
       set
-      <span onclick="this.parentElement.parentElement.style.display='none'" style="float:right;cursor:pointer;font-weight:bold;">✖️</span>
+      <span onclick="minimizeWindow('musicTab')" style="float:right;cursor:pointer;font-weight:bold;">✖️</span>
     </div>
     <div class="content">
       <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1797762778&color=%2300ff00&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
@@ -94,6 +94,29 @@
       </div>
     </div>
   </div>
+
+  <!-- Minimierte Fenster im Footer -->
+  <div id="minimized-windows" style="position:fixed; bottom:80px; left:0; right:0; display:flex; justify-content:center; gap:10px; z-index:10000;"></div>
+
+  <script>
+    function minimizeWindow(id) {
+      const win = document.getElementById(id);
+      win.style.display = 'none';
+
+      const minimized = document.getElementById('minimized-windows');
+      if (!document.getElementById('min-btn-' + id)) {
+        const btn = document.createElement('button');
+        btn.id = 'min-btn-' + id;
+        btn.textContent = id === 'textTab' ? 'playlist' : 'set';
+        btn.style = 'background:#222;color:#0f0;border:1px solid #0f0;padding:0.5em 1em;border-radius:6px;cursor:pointer;font-weight:bold;';
+        btn.onclick = function() {
+          win.style.display = '';
+          btn.remove();
+        };
+        minimized.appendChild(btn);
+      }
+    }
+  </script>
 
  
 
