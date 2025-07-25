@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Listening Bar</title>
+  <style>
+    body {
+      background: #008080;
+      font-family: 'Chicago', sans-serif;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .window {
+      position: absolute;
+      width: 300px;
+      background: #c0c0c0;
+      border: 2px solid #000;
+      box-shadow: 4px 4px #404040;
+      z-index: 1;
+      animation: popIn 0.4s;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .title-bar {
+      background: linear-gradient(#000080, #0000a0);
+      color: white;
+      padding: 5px;
+      cursor: move;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .content {
+      padding: 10px;
+      background: #ffffff;
+    }
+
+    audio {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Text-Tab -->
+  <div class="window" id="textTab" style="top: 50px; left: 50px;">
+    <div class="title-bar">
+      📝 Notes
+      <span onclick="this.parentElement.parentElement.style.display='none'" style="float:right;cursor:pointer;font-weight:bold;">✖️</span>
+    </div>
+    <div class="content">
+      <p>Hier steht dein Retro-Text! ✨<br>Mach's dir bequem und lehn dich zurück.</p>
+    </div>
+  </div>
+
+  <!-- Musik-Player Tab -->
+  <div class="window" id="musicTab" style="top: 200px; left: 200px;">
+    <div class="title-bar">🎵 Listening Bar</div>
+    <div class="content">
+      <audio controls>
+        <source src="DEIN-SONG-LINK.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  </div>
+
+  <!-- iPod-Spotify-Fenster -->
+  <div class="window" id="ipodTab" style="top: 350px; left: 400px; width: 260px; border-radius: 30px; overflow: hidden;">
+    <div class="title-bar" style="border-top-left-radius: 30px; border-top-right-radius: 30px; background: linear-gradient(90deg, #222, #444); text-align: center;">
+      <span style="font-size: 1.2em;">🎧 iPod</span>
+    </div>
+    <div class="content" style="background: #222; padding: 0;">
+      <div style="padding: 16px 10px 10px 10px;">
+        <!-- Spotify Embed: Ersetze den Link mit deinem Song/Playlist/Album -->
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3n3Ppam7vgaVa1iaRUc9Lp?utm_source=generator" width="230" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" loading="lazy"></iframe>
+      </div>
+      <!-- iPod Clickwheel Design -->
+      <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 12px;">
+        <div style="width: 90px; height: 90px; background: #eee; border-radius: 50%; box-shadow: 0 2px 8px #888; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
+          <span style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%); font-size: 0.9em; color: #444;">MENU</span>
+          <span style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); font-size: 1.2em;">⏮️</span>
+          <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 1.2em;">⏭️</span>
+          <span style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); font-size: 1.2em;">⏯️</span>
+          <span style="position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); font-size: 1.5em; color: #aaa;">●</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Drag-Funktion für Retro-Fenster
+    function dragElement(el) {
+      const header = el.querySelector(".title-bar");
+      let offsetX = 0, offsetY = 0, startX = 0, startY = 0;
+
+      header.onmousedown = dragMouseDown;
+
+      function dragMouseDown(e) {
+        e.preventDefault();
+        startX = e.clientX;
+        startY = e.clientY;
+        document.onmouseup = closeDragElement;
+        document.onmousemove = elementDrag;
+        el.style.zIndex = Date.now(); // Bringt das Fenster in den Vordergrund
+      }
+
+      function elementDrag(e) {
+        offsetX = e.clientX - startX;
+        offsetY = e.clientY - startY;
+        startX = e.clientX;
+        startY = e.clientY;
+        el.style.top = (el.offsetTop + offsetY) + "px";
+        el.style.left = (el.offsetLeft + offsetX) + "px";
+      }
+
+      function closeDragElement() {
+        document.onmouseup = null;
+        document.onmousemove = null;
+      }
+    }
+
+    dragElement(document.getElementById("textTab"));
+    dragElement(document.getElementById("musicTab"));
+    dragElement(document.getElementById("ipodTab"));
+  </script>
+</body>
+</html>

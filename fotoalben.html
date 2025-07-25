@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Digitales Fotoalbummm</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      background: #f9f9f9;
+      color: #333;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0077cc;
+      font-weight: 600;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .gallery {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .gallery-item {
+      position: relative;
+      max-width: 280px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      border-radius: 8px;
+      overflow: hidden;
+      background: white;
+      transition: transform 0.2s ease;
+    }
+    .gallery-item:hover {
+      transform: scale(1.05);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+    }
+    .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      padding: 6px 10px;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      pointer-events: none;
+    }
+    .gallery-item:hover .caption {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Lightbox styles */
+    #lightbox {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    #lightbox.active {
+      display: flex;
+    }
+    #lightbox img {
+      max-width: 90%;
+      max-height: 80vh;
+      border-radius: 8px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.9);
+    }
+    #lightbox .close, #lightbox .prev, #lightbox .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      font-size: 2.5rem;
+      background: rgba(0,0,0,0.4);
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 50%;
+      user-select: none;
+      transition: background 0.3s ease;
+    }
+    #lightbox .close:hover,
+    #lightbox .prev:hover,
+    #lightbox .next:hover {
+      background: rgba(0,0,0,0.7);
+    }
+    #lightbox .close {
+      top: 15px;
+      right: 20px;
+      transform: none;
+      font-size: 2rem;
+      border-radius: 4px;
+    }
+    #lightbox .prev {
+      left: 15px;
+    }
+    #lightbox .next {
+      right: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="digital-garden.html">Digital Garden</a></li>
+    <li><a href="fotoalbum.html" aria-current="page">Digitales Fotoalbum</a></li>
+    <li><a href="videothek.html">Videothek</a></li>
+  </ul>
+</nav>
+
+<h1>Digitales Fotoalbum</h1>
+
+<div class="gallery" id="gallery">
+  <div class="gallery-item" data-index="0" data-caption="Foto 1">
+    <img src="https://res.cloudinary.com/drfdvynif/image/upload/v1753277762/IMG_5091_qarnje.jpg" alt="Foto 1" />
+    <div class="caption">Foto 1</div>
+  </div>
+  <div class="gallery-item" data-index="1" data-caption="Foto 2">
+    <img src="https://res.cloudinary.com/drfdvynif/image/upload/v1753277761/IMG_5104_hfyfih.jpg" alt="Foto 2" />
+    <div class="caption">Foto 2</div>
+  </div>
+  <div class="gallery-item" data-index="2" data-caption="HEIC Bild (Browser nicht unterstützt)">
+    <img src="https://via.placeholder.com/280x180?text=HEIC+Bild+nicht+unterst%C3%BCtzt" alt="HEIC Bild nicht unterstützt" />
+    <div class="caption">HEIC Bild (nicht unterstützt)</div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Bildbetrachter">
+  <button class="close" aria-label="Schließen">&times;</button>
+  <button class="prev" aria-label="Vorheriges Bild">&#10094;</button>
+  <img src="" alt="" />
+  <button class="next" aria-label="Nächstes Bild">&#10095;</button>
+</div>
+
+<script>
+  const gallery = document.getElementById('gallery');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = lightbox.querySelector('img');
+  const closeBtn = lightbox.querySelector('.close');
+  const prevBtn = lightbox.querySelector('.prev');
+  const nextBtn = lightbox.querySelector('.next');
+  const items = gallery.querySelectorAll('.gallery-item');
+
+  let currentIndex = 0;
+
+  function openLightbox(index) {
+    currentIndex = index;
+    const item = items[currentIndex];
+    const img = item.querySelector('img');
+    const caption = item.getAttribute('data-caption');
+    lightboxImg.src = img.src;
+    lightboxImg.alt = caption;
+    lightbox.classList.add('active');
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    lightboxImg.src = '';
+    lightboxImg.alt = '';
+  }
+
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + items.length) % items.length;
+    openLightbox(currentIndex);
+  }
+
+  function showNext() {
+    currentIndex = (currentIndex + 1) % items.length;
+    openLightbox(currentIndex);
+  }
+
+  // Klick auf Galerie-Bild öffnet Lightbox
+  items.forEach((item, i) => {
+    item.addEventListener('click', () => openLightbox(i));
+  });
+
+  // Buttons
+  closeBtn.addEventListener('click', closeLightbox);
+  prevBtn.addEventListener('click', showPrev);
+  nextBtn.addEventListener('click', showNext);
+
+  // Keyboard Steuerung (Esc, Pfeil links/rechts)
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') showPrev();
+    if (e.key === 'ArrowRight') showNext();
+  });
+
+  // Klick außerhalb des Bildes schließt Lightbox
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+</script>
+
+</body>
+</html>
