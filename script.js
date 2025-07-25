@@ -1,4 +1,5 @@
-// script.js
+
+// Funktionalität für die "Zurück"-Schaltfläche
 document.addEventListener("DOMContentLoaded", function () {
   const backButtons = document.querySelectorAll(".back-btn");
 
@@ -9,3 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+// Passwortschutz für die Seite
+
+

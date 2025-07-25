@@ -93,21 +93,26 @@
   <script src="script.js"></script>
 
   <!-- ✅ JS: Optional (dein Scroll-Script) -->
-  <script>
-    const carousel = document.getElementById('videoCarousel');
-    const iframes = carousel.querySelectorAll('iframe');
-    let activeIndex = 0;
+ <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const allowedPassword = "start"; // ✏️ dein Gimmick-Passwort
+    const pwScreen = document.getElementById("pw-screen");
+    const pwInput = document.getElementById("pw-input");
+    const errorMsg = document.getElementById("error-msg");
 
-    function updateCoverFlow() {
-      iframes.forEach((iframe, i) => {
-        iframe.classList.remove('active');
-        if (i === activeIndex) {
-          iframe.classList.add('active');
+    pwInput.focus();
+
+    pwInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        if (pwInput.value === allowedPassword) {
+          pwScreen.style.opacity = "0";
+          setTimeout(() => pwScreen.remove(), 500); // optional fade-out
+        } else {
+          errorMsg.textContent = "access denied";
+          pwInput.value = "";
         }
-      });
-    }
+      }
+    });
+  });
+</script>
 
-    updateCoverFlow();
-  </script>
-</body>
-</html>

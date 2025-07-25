@@ -2,36 +2,16 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <title>Digitales Fotoalbummm</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-      background: #f9f9f9;
-      color: #333;
-    }
-    nav ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-      margin-bottom: 30px;
-    }
-    nav a {
-      text-decoration: none;
-      color: #0077cc;
-      font-weight: 600;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
+  <title>Digitales Fotoalbum</title>
+  <link rel="stylesheet" href="style.css">
+   <!-- Lottie Web Component -->
+  <script
+    src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"
+    type="module"
+    defer
+  ></script>
+ <style>
+  
     .gallery {
       display: flex;
       gap: 15px;
@@ -132,16 +112,15 @@
 </head>
 <body>
 
-<nav>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="digital-garden.html">Digital Garden</a></li>
-    <li><a href="fotoalbum.html" aria-current="page">Digitales Fotoalbum</a></li>
-    <li><a href="videothek.html">Videothek</a></li>
-  </ul>
+  <!-- ✅ HEADER -->
+ <nav>
+  <a href="#" class="back-btn back-arrow"></a>
+  <h1>fotostudio</h1>
+  <a href="about.html" class="about-btn"></a>
 </nav>
 
-<h1>Digitales Fotoalbum</h1>
+  <!-- ✅ SEITENINHALT -->
+<main>
 
 <div class="gallery" id="gallery">
   <div class="gallery-item" data-index="0" data-caption="Foto 1">
@@ -158,6 +137,21 @@
   </div>
 </div>
 
+<!--footer-->
+<footer>
+    <div id="animated-icon">
+      <dotlottie-wc
+        src="https://lottie.host/6c03ccb2-0264-4691-a909-ea4bfdb6846e/ZUioilGvNl.lottie"
+        style="width: 100px; height: 100px; margin: auto;"
+        speed="1"
+        autoplay
+        loop
+      ></dotlottie-wc>
+      <p>planted aug 25</p>
+    </div>
+   
+  </footer>
+
 <!-- Lightbox -->
 <div id="lightbox" role="dialog" aria-modal="true" aria-label="Bildbetrachter">
   <button class="close" aria-label="Schließen">&times;</button>
@@ -165,7 +159,8 @@
   <img src="" alt="" />
   <button class="next" aria-label="Nächstes Bild">&#10095;</button>
 </div>
-
+  <main>
+<script src="script.js"></script>
 <script>
   const gallery = document.getElementById('gallery');
   const lightbox = document.getElementById('lightbox');

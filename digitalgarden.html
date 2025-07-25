@@ -1,90 +1,51 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Digital Garden</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bibliothek</title>
+  <link rel="stylesheet" href="style.css"> <!-- Pfad ggf. anpassen -->
+
+  <!-- Lottie Web Component -->
+  <script
+    src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"
+    type="module"
+    defer
+  ></script>
+
+  <!-- Seiten-spezifisches CSS -->
   <style>
-    body {
-      background: #f7f7f7;
-      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
-      color: #222;
-      margin: 0;
-      padding: 0;
-    }
-    main {
-      max-width: 700px;
-      margin: 60px auto 0 auto;
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 4px 32px rgba(0,0,0,0.07);
-      padding: 40px 36px 32px 36px;
-    }
-    h1 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      margin-bottom: 0.7em;
-      letter-spacing: -1px;
-    }
-    h2 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-top: 2em;
-      margin-bottom: 0.7em;
-      color: #555;
-      letter-spacing: 0.5px;
-    }
-    p {
-      font-size: 1.08rem;
-      color: #444;
-      margin-bottom: 1.5em;
-      line-height: 1.7;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    ul li {
-      margin-bottom: 1.1em;
-    }
-    ul li a {
-      display: block;
-      text-decoration: none;
-      font-size: 1.08rem;
-      color: #222;
-      background: #f2f2f2;
-      border-radius: 10px;
-      padding: 16px 18px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-      transition: background 0.2s, box-shadow 0.2s;
-      font-weight: 500;
-    }
-    ul li a:hover {
-      background: #e0e0e0;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      color: #0077ff;
-    }
-    @media (max-width: 800px) {
-      main {
-        max-width: 98vw;
-        padding: 18px 8vw 18px 8vw;
-      }
-    }
+    /* Hier kannst du eigenes CSS hinzufügen */
   </style>
 </head>
 <body>
+
+  <!-- ✅ HEADER -->
+  <nav>
+    <a href="" class="back-btn back-arrow"></a>
+    <h1>bibliothek</h1>
+    <a href="about.html" class="about-btn"></a>
+  </nav>
+
+  <!-- ✅ SEITENINHALT -->
   <main>
-    <h1>🌱 Digital Garden</h1>
-    <p>Hier sammele ich lose Gedanken, Notizen und Konzepte, die sich mit der Zeit weiterentwickeln.</p>
-    <section>
-      <h2>Letzte Einträge</h2>
-      <ul>
-        <li><a href="#">🧠 Was ist ein Digital Garden?</a></li>
-        <li><a href="#">🪴 Notiz zu Wissen als Prozess</a></li>
-        <li><a href="#">📚 Leseliste Sommer 2025</a></li>
-      </ul>
-    </section>
+    <p>theorien der internationalen entwicklung</p>
+    <p>theorien der internationalen politik</p>
   </main>
+
+  <!--footer-->
+
+   <footer>
+    <div id="animated-icon">
+      <dotlottie-wc
+        src="https://lottie.host/4c50295a-b3ab-44a6-aeda-42da038cbf32/iFUAzgfYHw.lottie"
+        style="width: 80px; height: 80px; margin: auto;"
+        speed="0.7"
+        autoplay
+        loop
+      ></dotlottie-wc>
+    </div>
+  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
