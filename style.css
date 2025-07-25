@@ -105,6 +105,31 @@ footer {
   z-index: 100;
 }
 
+.window#textTab {
+  top: 50px;
+  left: 50px;
+  width: 370px;
+}
+.window#musicTab {
+  top: 200px;
+  left: 200px;
+  width: 370px;
+}
+
+.close-btn {
+  float: right;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.3em;
+  line-height: 1;
+  user-select: none;
+  color: #fff;
+  margin-left: 0.5em;
+  transition: color 0.2s;
+}
+.close-btn:hover {
+  color: #00ff00;
+}
 
 
 
