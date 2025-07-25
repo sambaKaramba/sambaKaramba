@@ -17,8 +17,6 @@
       min-height: 100vh;
       text-align: left;
       padding: 2rem;
-      max-width: 100vw;
-      overflow-x: hidden;
     }
 
     @media (max-width: 600px) {
@@ -33,12 +31,10 @@
     h1 {
       font-size: 2rem;
       margin-bottom: 2rem;
-      border-right: 1px solid #00ff00;
+      border-right: 2px solid #00ff00;
       white-space: nowrap;
       overflow: hidden;
-      width: 22ch;
-      animation: blink 0.7s step-end infinite;
-      /* Typing and blinking cursor animation */
+      animation:  steps(30, end), blink 0.7s step-end infinite;
     }
 
     @keyframes typing {
