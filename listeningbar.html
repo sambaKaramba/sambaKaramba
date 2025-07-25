@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <title>Listening Bar</title>
   <link rel="stylesheet" href="style.css">
- 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <!-- Lottie Web Component -->
   <script
     src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"
@@ -68,7 +69,10 @@
     }
     @media (max-width: 600px) {
       nav h1 {
-        font-size: 1.1rem;
+        font-size: 1.5rem;
+      }
+      nav {
+        padding: 1.2rem 1rem 1.2rem 1rem;
       }
       .window {
         width: 98vw !important;
@@ -92,8 +96,8 @@
         padding: 10px;
       }
       footer {
-        font-size: 0.9em;
-        padding: 0.7em 0;
+        font-size: 1.1em;
+        padding: 1.2em 0;
       }
       #animated-icon dotlottie-wc {
         width: 60px !important;
@@ -182,6 +186,7 @@
       let offsetX = 0, offsetY = 0, startX = 0, startY = 0;
 
       header.onmousedown = dragMouseDown;
+      header.ontouchstart = dragTouchStart;
 
       function dragMouseDown(e) {
         e.preventDefault();
@@ -189,7 +194,7 @@
         startY = e.clientY;
         document.onmouseup = closeDragElement;
         document.onmousemove = elementDrag;
-        el.style.zIndex = Date.now(); // Bringt das Fenster in den Vordergrund
+        el.style.zIndex = Date.now();
       }
 
       function elementDrag(e) {
@@ -204,6 +209,32 @@
       function closeDragElement() {
         document.onmouseup = null;
         document.onmousemove = null;
+      }
+
+      // Touch Events
+      function dragTouchStart(e) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        startX = touch.clientX;
+        startY = touch.clientY;
+        document.ontouchend = closeTouchDrag;
+        document.ontouchmove = elementTouchDrag;
+        el.style.zIndex = Date.now();
+      }
+
+      function elementTouchDrag(e) {
+        const touch = e.touches[0];
+        offsetX = touch.clientX - startX;
+        offsetY = touch.clientY - startY;
+        startX = touch.clientX;
+        startY = touch.clientY;
+        el.style.top = (el.offsetTop + offsetY) + "px";
+        el.style.left = (el.offsetLeft + offsetX) + "px";
+      }
+
+      function closeTouchDrag() {
+        document.ontouchend = null;
+        document.ontouchmove = null;
       }
     }
 
