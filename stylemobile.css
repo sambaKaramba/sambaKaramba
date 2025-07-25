@@ -1,0 +1,48 @@
+/* Gilt nur für Bildschirme mit max. 600px Breite */
+
+@media (max-width: 600px) {
+  body {
+    font-size: 1rem;
+    padding-bottom: 160px;
+  }
+
+  .window {
+    width: 88vw !important;    /* vorher 94vw */
+    left: 6vw !important;      /* vorher 3vw, damit es mittig bleibt */
+    top: auto !important;
+    position: relative !important;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;        /* etwas kleinere Schrift */
+    border-radius: 8px;
+  }
+
+  .title-bar {
+    font-size: 1rem;
+    padding: 7px;
+  }
+
+  .content {
+    padding: 0.7rem;
+  }
+
+  .content iframe {
+    width: 100% !important;
+    max-width: 100%;
+    height: 200px !important;
+  }
+
+  footer {
+    font-size: 0.8rem;
+    padding: 1.2em 0;
+  }
+
+  #animated-icon dotlottie-wc {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  nav h1 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+}

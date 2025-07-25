@@ -112,12 +112,8 @@
     </div>
   </div>
 
-  <!-- Minimierte Fenster im Footer -->
-  <div id="minimized-windows" style="position:fixed; bottom:80px; left:0; right:0; display:flex; justify-content:center; gap:10px; z-index:10000;"></div>
-
-  <!-- ✅ FOOTER -->
-  <footer style="display: flex; align-items: center; justify-content: center; gap: 1em; padding: 1em 0;">
-    <div id="animated-icon" style="display: flex; align-items: center; gap: 0em;">
+  <!-- Bewegliches Icon -->
+    <div class="content" style="padding: 0; background: transparent;">
       <dotlottie-wc
         src="assets/Vinylplayer.lottie"
         style="width: 110px; height: 110px;"
@@ -126,7 +122,15 @@
         loop
       ></dotlottie-wc>
     </div>
-  </footer>
+  </div>
+  <script>
+    dragElement(document.getElementById("animatedIcon"));
+  </script>
+
+  <!-- Minimierte Fenster im Footer -->
+  <div id="minimized-windows" style="position:fixed; bottom:80px; left:0; right:0; display:flex; justify-content:center; gap:10px; z-index:10000;"></div>
+
+  
 
   <script>
     function minimizeWindow(id) {
