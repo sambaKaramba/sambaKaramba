@@ -5,17 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>bibliothek</title>
   <link rel="stylesheet" href="style.css"> <!-- Pfad ggf. anpassen -->
-
-  <!-- Lottie Web Component -->
+ <!-- Lottie Web Component -->
   <script
     src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"
     type="module"
     defer
-  ></script>
+  ></script>  
 
   <!-- Seiten-spezifisches CSS -->
   <style>
     /* Hier kannst du eigenes CSS hinzufügen */
+     .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .menu a {
+      color: #00ff00;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: color 0.2s;
+    }
+
+    .menu a:hover {
+      color: #00ffaa;
+    }
   </style>
 </head>
 <body>
@@ -29,22 +44,24 @@
 
   <!-- ✅ SEITENINHALT -->
   <main>
-    <p>theorien der internationalen entwicklung</p>
-    <p>theorien der internationalen politik</p>
+     <div class="menu">
+    <a href="internationaleEntwicklung.html">theorien der internationalen entwicklung</a>
+  </div>
+  
   </main>
 
   <!--footer-->
 
-   <footer>
-    <div id="animated-icon">
-      <dotlottie-wc
-        src="https://lottie.host/4c50295a-b3ab-44a6-aeda-42da038cbf32/iFUAzgfYHw.lottie"
-        style="width: 80px; height: 80px; margin: auto;"
-        speed="0.7"
-        autoplay
-        loop
-      ></dotlottie-wc>
-    </div>
+  <footer>
+   <div id="animated-icon">
+    <dotlottie-wc
+      src="assets/book.lottie"
+      style="width: 80px; height: 80px; margin: auto;"
+      speed="0.7"
+      autoplay
+      loop
+    ></dotlottie-wc>
+   </div>
   </footer>
   <script src="script.js"></script>
 </body>

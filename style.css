@@ -17,7 +17,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: #111;
+      background-color: black;
       font-size: 1em;
       padding: 1em 1em;
       font-family: 'Courier New', monospace;;
@@ -27,7 +27,7 @@ nav h1 {
   margin: 0;
   font-size: 1.2em;
   font-weight: bold;
-  color: #00ff00;
+  color: #fff;
   text-align: center;
   flex: 1; /* optional: nimmt Platz ein und hilft beim Zentrieren */
 }
@@ -45,6 +45,7 @@ nav h1 {
 
 .back-arrow::before {
   content: '←';  /* Unicode Pfeil nach links */
+  color: #00ff00; /* grüne Farbe */
   margin-right: 0.5rem;
   font-size: 1.5rem;
 }
@@ -56,7 +57,6 @@ nav h1 {
 
 .about-btn {
   content: "about";
-  color: #fff;
   text-decoration: none;
   font-family: 'Courier New', monospace;
   font-size: 1em;
@@ -67,10 +67,18 @@ nav h1 {
 }
 
 .about-btn::before {
-  content: 'i'; /* Unicode Info-Symbol */
-  margin-right: 0.5rem;
-  font-size: 1.0rem;
-}   
+    content: "about";
+    margin-right: 0.5em; /* Abstand NACH "about" */
+    font-family: 'Courier New', monospace;
+    color: #fff;
+}
+
+.about-btn::after {
+    content: 'i'; /* Unicode Info-Symbol */
+    margin-left: 0.3em; /* Abstand VOR "i" */
+    font-size: 1.0rem;
+    color: #00ff00;
+}
 
 /*Inhalt*/
 main {

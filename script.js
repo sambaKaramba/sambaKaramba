@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   backButtons.forEach(function (btn) {
     btn.addEventListener("click", function (e) {
-      e.preventDefault(); // verhindert Standard-Linkverhalten
-      window.location.href = 'index.html'     // geht zur vorherigen Seite im Verlauf
+    e.preventDefault(); // verhindert Standard-Linkverhalten
+    window.history.back(); // geht zur vorherigen Seite im Verlauf
     });
   });
 });

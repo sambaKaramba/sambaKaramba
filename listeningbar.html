@@ -3,13 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <title>Listening Bar</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Lottie Web Component -->
+  <script
+    src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"
+    type="module"
+    defer
+  ></script>
+
   <style>
-    body {
-      background: #008080;
-      font-family: 'Chicago', sans-serif;
-      margin: 0;
-      overflow: hidden;
-    }
+   
 
     .window {
       position: absolute;
@@ -18,12 +21,6 @@
       border: 2px solid #000;
       box-shadow: 4px 4px #404040;
       z-index: 1;
-      animation: popIn 0.4s;
-    }
-
-    @keyframes popIn {
-      0% { transform: scale(0.8); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
     }
 
     .title-bar {
@@ -46,6 +43,14 @@
   </style>
 </head>
 <body>
+   <!-- Header -->
+  <header>
+    <nav>
+      <a href="" class="back-btn back-arrow"></a>
+      <h1>listening bar</h1>
+      <a href="about.html" class="about-btn"></a>
+    </nav>
+  </header>
 
   <!-- Text-Tab -->
   <div class="window" id="textTab" style="top: 50px; left: 50px;">
@@ -92,6 +97,12 @@
     </div>
   </div>
 
+  <footer>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 0.5em;">
+      <dotlottie-player src="/assets/Tree.json" background="transparent" speed="1" style="width: 50px; height: 50px;" loop autoplay></dotlottie-player>
+    </div>
+  </footer>
+  <script src="script.js"></script>
   <script>
     // Drag-Funktion für Retro-Fenster
     function dragElement(el) {
