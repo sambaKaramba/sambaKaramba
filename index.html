@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>sambasi | Start</title>
+  <link rel="stylesheet" href="stylemobile.css" />
   <style>
     body {
       margin: 0;
@@ -19,30 +20,35 @@
       padding: 2rem;
     }
 
-    @media (max-width: 600px) {
-      body {
-        padding: 0.5rem;
-      }
-      h1 {
-        font-size: 1.2rem;
-      }
-    }
-
     h1 {
       font-size: 2rem;
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
       border-right: 2px solid #00ff00;
+      box-sizing: border-box;
+      max-width: 98vw;
+      padding-right: 1em;
+      padding-left: 1em;
       white-space: nowrap;
       overflow: hidden;
-      animation:  steps(30, end), blink 0.7s step-end infinite;
+      width: 22ch;
+      animation: typing 2.5s steps(22, end) 0.5s forwards, blink 0.75s step-end infinite;
+    }
+
+    /* The .typing-complete class disables the typing animation and keeps the border for completed typing effect */
+    h1.typing-complete {
+      animation: blink 0.75s step-end infinite;
+      border-right: 2px solid #00ff00;
+      width: fit-content;
+      overflow: visible;
     }
 
     @keyframes typing {
       from { width: 0; }
-      to { width: 100%; }
+      to { width: 22ch; }
     }
 
     @keyframes blink {
+      0%, 100% { border-color: #00ff00; }
       50% { border-color: transparent; }
     }
 
@@ -65,11 +71,29 @@
 
     footer {
       position: fixed;
+      left: 0;
+      right: 0;
       bottom: 10px;
       font-size: 0.8rem;
       opacity: 0.5;
+      background: transparent;
+      text-align: center;
+      z-index: 100;
     }
 
+    /* Mobile fix: reduce padding and font size for h1 */
+    @media (max-width: 600px) {
+      body {
+        padding: 0.5rem;
+      }
+      h1 {
+        font-size: 1.1rem;
+        max-width: 98vw;
+        padding-left: 0.3em;
+        padding-right: 0.3em;
+        width: 18ch;
+      }
+    }
   </style>
 </head>
 <body>

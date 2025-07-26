@@ -7,7 +7,7 @@
   }
 
   .window {
-    width: 88vw !important;    /* vorher 94vw */
+    width: 50vw !important;    /* vorher 94vw */
     left: 6vw !important;      /* vorher 3vw, damit es mittig bleibt */
     top: auto !important;
     position: relative !important;
@@ -42,7 +42,7 @@
   }
 
   nav h1 {
-    font-size: 1.2rem;
+    font-size: 1.0rem;
     text-align: center;
   }
 }
