@@ -1,0 +1,81 @@
+<!-- editor.html -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Editor – Digital Garden</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #0d0d0d;
+      color: #f2f2f2;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    #editorWindow {
+      background: #1a1a1a;
+      border: 1px solid #555;
+      width: 80vw;
+      height: 80vh;
+      resize: both;
+      overflow: auto;
+      padding: 1rem;
+      box-shadow: 0 0 12px #000;
+    }
+
+    textarea {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      color: #f2f2f2;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      font-family: inherit;
+      resize: none;
+      line-height: 1.5;
+    }
+
+    textarea::placeholder {
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div id="editorWindow">
+    <textarea id="editor" placeholder="# Schreibe hier ..."># Neue Notiz</textarea>
+  </div>
+
+  <script>
+    const editor = document.getElementById('editor');
+
+    // Notiz aus vorherigem Schreiben laden
+    const saved = localStorage.getItem('lastNote');
+    if (saved) editor.value = saved;
+
+    // Beim Schreiben speichern + Notizverlauf aktualisieren
+    editor.addEventListener('input', () => {
+      localStorage.setItem('lastNote', editor.value);
+      saveToGarden(editor.value);
+    });
+
+    function saveToGarden(content) {
+      const notes = JSON.parse(localStorage.getItem('gardenNotes') || '[]');
+      const title = content.trim().split('\n')[0] || 'Untitled';
+
+      if (notes.length === 0 || notes[notes.length - 1].content !== content) {
+        notes.push({
+          title: title.replace(/^#*\s*/, ''),
+          content,
+          timestamp: new Date().toISOString()
+        });
+        localStorage.setItem('gardenNotes', JSON.stringify(notes));
+      }
+    }
+  </script>
+</body>
+</html>

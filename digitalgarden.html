@@ -44,12 +44,8 @@
 
   <!-- ✅ SEITENINHALT -->
   <main>
-     <div class="menu">
-    <a href="notes/internationaleEntwicklung.html">theorien der internationalen entwicklung</a>
-    <a href="notes/poems.html">gedichte</a>
-  </div>
-  
-  </main>
+  <div class="menu" id="notes-menu"></div>
+</main>
 
   <!--footer-->
 
@@ -65,5 +61,24 @@
    </div>
   </footer>
   <script src="script.js"></script>
+  <script>
+  // Holt die Dateiliste aus /notes und baut das Menü
+  fetch('notes/index.json')
+    .then(response => response.json())
+    .then(files => {
+      const menu = document.getElementById('notes-menu');
+      files.forEach(file => {
+        // Nur .html-Dateien anzeigen
+        if (file.endsWith('.html')) {
+          // Dateiname ohne .html und ggf. mit schönerem Namen
+          const name = file.replace('.html', '').replace(/_/g, ' ');
+          const link = document.createElement('a');
+          link.href = 'notes/' + file;
+          link.textContent = name;
+          menu.appendChild(link);
+        }
+      });
+    });
+</script>
 </body>
 </html>
