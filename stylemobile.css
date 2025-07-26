@@ -4,7 +4,12 @@
   body {
     font-size: 1rem;
     padding-bottom: 160px;
+    padding: 0.5rem;
   }
+
+  h1 {
+    font-size: 1.2rem;
+      }
 
   .window {
     width: 50vw !important;    /* vorher 94vw */
@@ -44,5 +49,24 @@
   nav h1 {
     font-size: 1.0rem;
     text-align: center;
+  }
+}
+
+/* Gilt für Bildschirme mit max. 600px Breite */
+
+@media (max-width: 600px) {
+  .notes-container {
+    width: 96vw;
+    min-width: unset;
+    max-width: unset;
+    margin-top: 2.2rem;
+    padding: 0.5em;
+  }
+  .notes-headline-row h1 {
+    font-size: 1.2rem;
+  }
+  .notes-content {
+    font-size: 1rem;
+    padding: 0.1em;
   }
 }

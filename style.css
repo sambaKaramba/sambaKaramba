@@ -81,7 +81,7 @@ nav h1 {
     color: #00ff00;
 }
 
-/*Inhalt*/
+/* Inhalt */
 main {
  flex: 1;                   /* nimmt den verfügbaren Platz ein */
   display: flex;             /* flex-Container aktivieren */
@@ -129,6 +129,42 @@ footer {
 }
 .close-btn:hover {
   color: #00ff00;
+}
+
+.notes-container {
+  margin: 0 auto;
+  margin-top: 3.5rem;
+  width: 50vw;
+  min-width: 340px;
+  max-width: 700px;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.notes-headline-row {
+  width: 100%;
+  border-bottom: 2px solid #00ff00;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  min-height: 3.2em;
+}
+.notes-headline-row h1 {
+  margin: 0;
+  padding: 0.3em 0;
+  font-size: 2rem;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.notes-content {
+  text-align: justify;
+  font-size: 1.1rem;
+  color: #fff;
+  font-family: 'Courier New', monospace;
+  line-height: 1.7;
 }
 
 
